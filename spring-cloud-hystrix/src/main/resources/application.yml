@@ -2,7 +2,7 @@ server:
   port: 8088
 spring:
   application:
-    name: eureka-ribbon-client
+    name: eureka-hystrix-client
 eureka:
   client:
     service-url:
