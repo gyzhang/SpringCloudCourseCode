@@ -1,0 +1,9 @@
+server:
+  port: 8091
+spring:
+  application:
+    name: ribbon-client
+eureka:
+  client:
+    service-url:
+      default-zone: http://p1:8761/eureka/
