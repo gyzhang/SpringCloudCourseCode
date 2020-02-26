@@ -1,0 +1,9 @@
+server:
+  port: 8080
+spring:
+  application:
+    name: eureka-feign-client
+eureka:
+  client:
+    service-url:
+      default-zone: http://p1:8761/eureka/
