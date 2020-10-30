@@ -1,0 +1,41 @@
+spring:
+  application:
+    name: service-member
+  cloud:
+    config:
+      discovery:
+        enabled: true
+        service-id: SERVICE-CONFIG-SERVER
+      fail-fast: true
+  profiles:
+    active: dev
+  eureka:
+  client:
+    service-url:
+      default-zone: http://localhost:8761/eureka/
+  # 以下数据源、缓存、消息配置，处于演示目的在本配置文件中配置，请后续练习将其移动到配置中心
+  datasource:
+    url: jdbc:mysql://localhost:3306/studyexample?useUnicode=true&characterEncoding=utf8&serverTimezone=GMT%2B8
+    username: root
+    password: 123456
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  redis:
+    database: 0
+    host: localhost
+    port: 6379
+    password:
+  rabbitmq:
+    host: 127.0.0.1
+    port: 5672
+    username: guest
+    password: guest
+    # 开启发送确认
+    publisher-confirm-type: correlated
+    # 开启发送失败退回
+    publisher-returns: true
+    # 开启ACK
+    listener:
+      direct:
+        acknowledge-mode: manual
+      simple:
+        acknowledge-mode: manual
