@@ -9,6 +9,7 @@ public class RabbitMQConfig {
 
     @Bean
     public Queue kevinQueue() {
+
         return new Queue("kevin");
     }
 

@@ -1,0 +1,46 @@
+server:
+  port: 8080
+spring:
+  application:
+    name: seata-demo-account
+  cloud:
+    consul:
+      host: localhost
+      port: 8500
+# mysql数据源配置
+  datasource:
+    url: jdbc:mysql://localhost:3306/account?useUnicode=true&characterEncoding=utf-8&serverTimezone=GMT%2B8
+    username: root
+    password: 123456
+    driver-class-name: com.mysql.cj.jdbc.Driver
+# mybatis 配置信息
+mybatis:
+  mapper-locations: classpath:mapping/*Mapper.xml
+  type-aliases-package: com.example.account.entity
+  configuration:
+    map-underscore-to-camel-case: true
+seata:
+  enabled: true
+  application-id: seata-demo-account
+  tx-service-group: my_test_tx_group
+  enable-auto-data-source-proxy: true
+  data-source-proxy-mode: AT
+  use-jdk-proxy: false
+  service:
+    vgroup-mapping:
+      my_test_tx_group: default
+    grouplist:
+      default: localhost:8091
+    enable-degrade: false
+    disable-global-transaction: false
+  registry:
+    type: consul
+    load-balance: RandomLoadBalance
+    load-balance-virtual-nodes: 10
+    consul:
+      server-addr: localhost:8500
+      cluster: default
+  config:
+    type: file
+    file:
+      name: file.conf
